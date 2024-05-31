@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Settings Interface</title>
+<link rel="stylesheet" href="/tp5/public/static/plugins/bootstrap/css/bootstrap.min.css">
+<!-- Fontawesome CSS -->
+<link href="/tp5/public/static/font-awesome/css/font-awesome.css" rel="stylesheet">
+<!--  Feather Icon CSS -->
+<link href="/tp5/public/static/icon/feather/css/feather.css" rel="stylesheet">
+<link rel="stylesheet" href="/tp5/public/static/plugins/bootstrap-table/bootstrap-table.min.css">
+<link href="/tp5/public/static/css/cust.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    body{
+        padding: 10px;
+    }
+    body td button{
+            white-space: nowrap;
+        }
+</style>
+</head>
+<body>
+
+<table id="employeeTable"></table>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+<script src="/tp5/public/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/tp5/public/static/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/tp5/public/static/plugins/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script src="/tp5/public/static/plugins/bootstrap-table/table-export/libs/FileSaver/FileSaver.min.js"></script>
+<script src="/tp5/public/static/plugins/bootstrap-table/table-export/libs/js-xlsx/xlsx.core.min.js"></script>
+<script src="/tp5/public/static/plugins/bootstrap-table/table-export/libs/jsPDF/jspdf.umd.min.js"></script>
+<script src="/tp5/public/static/plugins/bootstrap-table/table-export/tableExport.min.js"></script>
+<script src="/tp5/public/static/plugins/bootstrap-table/bootstrap-table-export.min.js"></script>
+
+<script>
+$(document).ready(function() {
+
+    setTable();
+            function setTable(res) {
+                var data = [];
+                if (res && res.length > 0) {
+                    data = res;
+                }
+                $('#employeeTable').bootstrapTable({
+                    url: '/tp5/public/index.php/index/Baojing/record',
+                    striped: true,
+                    pagination: true,       // 开启分页
+                    sidePagination: 'server',// 分页在客户端进行
+                    pageNumber:1,
+                    pageSize: 10,
+                    showColumns: true,
+                    showToggle: true,
+                    showExport: true,
+                    exportDataType:'all',
+                    exportTypes:['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
+                    columns: [{
+                        field: 'id',
+                        title: '序号'
+                    }, {
+                        field: 'Time',
+                        title: '时间'
+                    }, {
+                        field: 'Rome',
+                        title: '库房'
+                    }, {
+                        title: '探头',
+                        field: 'Probe'
+                    }, {
+                        title: '温度',
+                        field: 'Temperature'
+                    }, {
+                        title: '湿度',
+                        field: 'Humidity'
+                    }, {
+                        title: '温度状态',
+                        field: 'TemperatureStatus'
+                    }, {
+                        title: '湿度状态',
+                        field: 'HumidityStatus'
+                    }]
+                });
+            }
+
+});
+</script>
+
+</body>
+</html>

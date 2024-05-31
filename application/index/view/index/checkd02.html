@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Adminos | Admin Dashboard</title>
+    <link href="/favicon.ico" rel="icon" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link href="/tp5/public/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fontawesome CSS -->
+    <link href="/tp5/public/static/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!--  Feather Icon CSS -->
+    <link href="/tp5/public/static/icon/feather/css/feather.css" rel="stylesheet">
+    <!-- Toastr style -->
+    <link href="/tp5/public/static/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <!-- Gritter -->
+    <link href="/tp5/public/static/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+    <!-- Animate CSS-->
+    <link href="/tp5/public/static/plugins/animate.css/css/animate.css" rel="stylesheet">
+    <!-- I-Check CSS -->
+    <link href="/tp5/public/static/plugins/iCheck/custom.css" rel="stylesheet">
+    <!--Jquery-ui-->
+    <link rel="stylesheet" href="/tp5/public/static/plugins/jquery-ui/jquery-ui.css">
+    <!-- Custom CSS Style-->
+    <link href="/tp5/public/static/css/style.css" rel="stylesheet">
+    <link href="/tp5/public/static/css/cust.css" rel="stylesheet">
+</head>
+<body class="default-theme  mini-body">
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side">
+            <div class="sidebar-brand fixed-brand">
+                <span>我的系统</span>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="logo-element fixed-brand">
+                            <span>系统</span>
+                        </div>
+                        <div class="dropdown profile-element">
+                            <div class="sidebar-header">
+                                <div class="user-profile-info">
+                                    <div class="user-pic">
+                                        <img class="img-responsive img-rounded" alt="User picture" src="">
+                                    </div>
+                                    <div class="user-info">
+    
+                                        <span class="user-role">admin</span>
+                                        <span class="user-status">
+                                            <i class="fa fa-circle text-success"></i>
+                                            <span>在线</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="index.html" class="nav-link"><i class="fa feather icon-menu"></i> <span class="nav-label">d02监控管理</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li class="nav-item"><a href="/tp5/public/index.php/index/D02/d02shishixianshi" toId="d02" target="mainFrame" class="nav-link active"><i class="fa fa-circle-o"></i>d02实时显示</a></li>
+                            <li class="nav-item"><a href="/tp5/public/index.php/index/D02/d02baobiao" toId="d02" target="mainFrame" class="nav-link"><i class="fa fa-circle-o"></i>d02表格</a></li>
+                            <li class="nav-item"><a href="/tp5/public/index.php/index/D02/d02quxian" toId="d02" target="mainFrame" class="nav-link"><i class="fa fa-circle-o"></i>d02曲线</a></li>
+                            <li class="nav-item"><a href="/tp5/public/index.php/index/D02baojing/d02baojing" toId="d02" target="mainFrame" class="nav-link"><i class="fa fa-circle-o"></i>d02报警</a></li>
+                        </ul>
+                    </li>
+                   
+                   
+				
+                </ul>
+            </div>
+        </nav>
+        <div id="page-wrapper" class="gray-bg topMargin">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top navbar-fixed-top topNav-white-theme" id="topNavbar">
+                    <div class="navbar-header left">
+                        <a class="nav-link navbar-mini mini-style" href="#"><i class="feather icon-menu"></i></a>
+                        <div class="searchbar">
+                            <input class="search_input" type="text" placeholder="Search...">
+                            <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
+                        </div>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link btn-full-screen toggle-full-screen" onclick="toggleFullScreen();" data-toggle="tooltip" data-placement="top" title="Go FullScreen" data-original-title="FullScreen"><span id="top-full-screen" class="feather icon-maximize full-screen" aria-hidden="true"></span></a>
+                        </li>
+
+                        <li class="nav-item user-profile header-notification">
+                            <div class="nav-link dropdown-primary dropdown config">
+                                <div class="dropdown-toggle" aria-expanded="true" data-toggle="dropdown" role="menu" style="cursor: pointer;">
+                                    <img class="img-radius" alt="" src=""><span class="text-light">admin</span><i class="feather icon-chevron-down"></i>
+                                </div>
+                                <ul class="dropdown-menu dropdown-menu-right mb-3 menu-log flipInX animated  ml-auto" data-dropdown-out="fadeOut" data-dropdown-in="fadeIn">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link setting-btn">
+                                            <i class="fa fa-cogs"></i> 设置
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link personal-info" href="/tp5/public/index.php/index/index/user" target="mainFrame">
+                                            <i class="fa fa-user"></i> 个人资料
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/tp5/public/index.php/index/index/login">
+                                            <i class="fa fa-sign-out"></i> 退出
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link setting-btn">
+                                <i class="fa fa-cogs"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="main-content">
+                <div class="row breadcrumb-box">
+                    <div class="col-sm-12 col-md-7 col-lg-8 col-xl-8">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" class="default">我的系统</a></li>
+                            <li class="breadcrumb-item first-menu">实时显示</li>
+                            <li class="breadcrumb-item second-menu active" aria-current="page">d02</li>
+                        </ol>
+                    </div>
+                </div>
+                <iframe name="mainFrame" src="/tp5/public/index.php/index/D02/d02shishixianshi" width="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling-x="no" scrolling-y="auto" allowtransparency="yes" ></iframe>
+                <!---页面内容---->
+
+                <div class="footer fixed">
+                    <div>
+                        <strong>&copy; 2024</strong> create By <a href="http://www.baidu.com">zyl</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- <div class="selector-toggle">
+            <a href="javascript:void(0)" class="right-sidebar-toggle"><i class="feather icon-settings rotate-icon"></i></a>
+        </div> -->
+        <div id="right-sidebar" class="animated  cust-black-right">
+            <div class="sidebar-container">
+                <ul class="nav nav-tabs navs-3 setting-menu default-theme" id="mySidenav">
+                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab-1"> Skin</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-2"><i class="fa fa-cogs"></i></a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane active">
+                        <div class="sidebar-title">
+                            <h5> <i class="fa fa-th" aria-hidden="true"></i> 布局设置</h5>
+                        </div>
+                        <br>
+                        <div class="color-theme-panel">
+                            <div class="themes-scroll">
+                                <h6>头部皮肤</h6></h6>
+                                <div class="theme-color">
+                                    <a class="btn-header-theme" data-myattr="topNav-blue-theme" href="#">
+                                        <div class="theme-1"></div>
+                                    </a>
+                                    <a class="btn-header-theme" data-myattr="topNav-brown-theme" href="#">
+                                        <div class="theme-2"></div>
+                                    </a>
+                                    <a class="btn-header-theme" data-myattr="topNav-dark-gray-theme" href="#">
+                                        <div class="theme-3"></div>
+                                    </a>
+                                    <a class="btn-header-theme" data-myattr="topNav-dark-pink-theme" href="#">
+                                        <div class="theme-4"></div>
+                                    </a>
+                                    <a class="btn-header-theme" data-myattr="topNav-default-theme" href="#">
+                                        <div class="theme-5"></div>
+                                    </a>
+                                    <a class="btn-header-theme" data-myattr="topNav-gray-theme" href="#">
+                                        <div class="theme-6"></div>
+                                    </a>
+                                    <a class="btn-header-theme" data-myattr="topNav-green-theme" href="#">
+                                        <div class="theme-7"></div>
+                                    </a>
+                                    <a class="btn-header-theme" data-myattr="topNav-light-blue-theme" href="#">
+                                        <div class="theme-8"></div>
+                                    </a>
+                                    <a class="btn-header-theme" data-myattr="topNav-light-green-theme" href="#">
+                                        <div class="theme-9"></div>
+                                    </a>
+                                    <a class="btn-header-theme" data-myattr="topNav-orange-theme" href="#">
+                                        <div class="theme-10"></div>
+                                    </a>
+                                    <a class="btn-header-theme" data-myattr="topNav-purple-theme" href="#">
+                                        <div class="theme-11"></div>
+                                    </a>
+                                    <a class="btn-header-theme" data-myattr="topNav-red-theme" href="#">
+                                        <div class="theme-12"></div>
+                                    </a>
+                                    <a class="btn-header-theme" data-myattr="topNav-sky-theme" href="#">
+                                        <div class="theme-13"></div>
+                                    </a>
+                                    <a class="btn-header-theme" data-myattr="topNav-yellow-theme" href="#">
+                                        <div class="theme-14"></div>
+                                    </a>
+                                    <a class="btn-header-theme" data-myattr="topNav-white-theme" href="#">
+                                        <div class="theme-29"></div>
+                                    </a>
+                                    <a class="btn-header-theme" data-myattr="topNav-default-theme" href="#">
+                                        <div class="theme-5"></div>
+                                    </a>
+                                </div>
+                                <h6>左侧皮肤</h6>
+                                <div class="theme-color">
+                                    <a class="btn-sidebar-theme" data-myattr="blue-theme" href="#">
+                                        <div class="theme-15"></div>
+                                    </a>
+                                    <a class="btn-sidebar-theme" data-myattr="brown-theme" href="#">
+                                        <div class="theme-16"></div>
+                                    </a>
+                                    <a class="btn-sidebar-theme" data-myattr="dark-gray-theme" href="#">
+                                        <div class="theme-17"></div>
+                                    </a>
+                                    <a class="btn-sidebar-theme" data-myattr="dark-pink-theme" href="#">
+                                        <div class="theme-18"></div>
+                                    </a>
+                                    <a class="btn-sidebar-theme" data-myattr="default-theme" href="#">
+                                        <div class="theme-19"></div>
+                                    </a>
+                                    <a class="btn-sidebar-theme" data-myattr="gray-theme" href="#">
+                                        <div class="theme-20"></div>
+                                    </a>
+                                    <a class="btn-sidebar-theme" data-myattr="green-theme" href="#">
+                                        <div class="theme-21"></div>
+                                    </a>
+                                    <a class="btn-sidebar-theme" data-myattr="light-blue-theme" href="#">
+                                        <div class="theme-22"></div>
+                                    </a>
+                                    <a class="btn-sidebar-theme" data-myattr="light-green-theme" href="#">
+                                        <div class="theme-23"></div>
+                                    </a>
+                                    <a class="btn-sidebar-theme" data-myattr="orange-theme" href="#">
+                                        <div class="theme-24"></div>
+                                    </a>
+                                    <a class="btn-sidebar-theme" data-myattr="purple-theme" href="#">
+                                        <div class="theme-25"></div>
+                                    </a>
+                                    <a class="btn-sidebar-theme" data-myattr="red-theme" href="#">
+                                        <div class="theme-26"></div>
+                                    </a>
+                                    <a class="btn-sidebar-theme" data-myattr="sky-theme" href="#">
+                                        <div class="theme-27"></div>
+                                    </a>
+                                    <a class="btn-sidebar-theme" data-myattr="yellow-theme" href="#">
+                                        <div class="theme-28"></div>
+                                    </a>
+                                    <a class="btn-sidebar-theme" data-myattr="white-theme" href="#">
+                                        <div class="sidebar-white"></div>
+                                    </a>
+                                    <a class="btn-sidebar-theme" data-myattr="default-theme" href="#">
+                                        <div class="sidebar-colored"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div id="tab-2" class="tab-pane">
+                        <div class="sidebar-title">
+                            <h5><i class="fa fa-gears"></i> 设置</h5>
+                        </div>
+                        <div class="setting-scroll">
+                            <!-- <div class="setings-item">
+                                <span>
+                                    Fix Navbar
+                                </span>
+                                <div class="switch float-right">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" checked name="collapsemenu" class="onoffswitch-checkbox" id="fixed-top-navbar">
+                                        <label class="onoffswitch-label" for="fixed-top-navbar">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="setings-item">
+                                <span>
+                                    切换sadebar
+                                </span>
+                                <div class="switch float-right">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="mini-sidebar-menu">
+                                        <label class="onoffswitch-label" for="mini-sidebar-menu">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="setings-item">
+                                <span>
+                                    切换右侧背景深色或浅色
+                                </span>
+                                <div class="switch float-right">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="changeRightBg">
+                                        <label class="onoffswitch-label" for="changeRightBg">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="setings-item">
+                                <span>
+                                    切换显示Footer
+                                </span>
+                                <div class="switch float-right">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" checked name="collapsemenu" class="onoffswitch-checkbox" id="fixed-footer">
+                                        <label class="onoffswitch-label" for="fixed-footer">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="setings-item">
+                                <span>
+                                    切换显示搜索
+                                </span>
+                                <div class="switch float-right">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="changeSearch">
+                                        <label class="onoffswitch-label" for="changeSearch">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mainly scripts -->
+    <script src="/tp5/public/static/plugins/jquery/jquery-3.1.1.min.js"></script>
+    <script src="/tp5/public/static/plugins/popper/popper.min.js"></script>
+    <script src="/tp5/public/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/tp5/public/static/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/tp5/public/static/plugins/jquery-slimscroll/js/jquery.slimscroll.js"></script>
+    <!-- Toastr JS -->
+    <script src="/tp5/public/static/plugins/toastr/toastr.min.js"></script>
+    <!-- GITTER -->
+    <script src="/tp5/public/static/plugins/gritter/jquery.gritter.min.js"></script>
+    <!-- jquery UI -->
+    <script src="/tp5/public/static/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Touch Punch - Touch Event Support for jQuery UI -->
+    <script src="/tp5/public/static/plugins/touchpunch/jquery.ui.touch-punch.min.js"></script>
+    <!-- Pace JS -->
+    <script src="/tp5/public/static/plugins/pace/pace.min.js"></script>
+    <!-- Sparkline JS-->
+    <script src="/tp5/public/static/plugins/sparkline/js/jquery.sparkline.min.js"></script>
+    <!-- Peity Chart JS-->
+    <script src="/tp5/public/static/plugins/peity/js/jquery.peity.js"></script>
+    <!--Jquery Cookies JS-->
+    <script src="/tp5/public/static/plugins/jquery.cookie/js/jquery.cookie.js"></script>
+    <!-- Amcharts4 Resources -->
+    <script src="/tp5/public/static/plugins/amcharts/amcharts.js"></script>
+    <script src="/tp5/public/static/plugins/amcharts/serial.js"></script>
+    <!--Swiper JS-->
+    <script src="/tp5/public/static/plugins/swiper/js/swiper.js"></script>
+    <!-- Custom JS-->
+    <script src="/tp5/public/static/js/AdminosJS.js"></script>
+    <script src="/tp5/public/static/js/pages-js/dashboardv2.js"></script>
+    <script src="/tp5/public/static/js/cust.js"></script>
+    <script>
+
+        $(function(){
+            $.get("/tp5/public/index.php/index/Index/userInfo",function(res){
+                if(res && res.rows){
+                    var name = res.rows.username;
+                    var imgSrc = res.rows.photourl;
+                    setName(name);
+                    setAvatar(imgSrc);
+                }
+            },'json');
+        });
+
+        function setName(name){
+            if(name){
+                $('.user-info .user-role').text(name);
+                $('.text-light').text(name);
+            }
+        }
+        
+        function setAvatar(imgSrc){
+            if(imgSrc){
+                $('.user-pic img').attr('src',imgSrc);
+                $('.img-radius').attr('src',imgSrc);
+            }
+
+        }
+    </script>
+</body>
+</html>

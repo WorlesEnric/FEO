@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		 <style>
+			html{
+				width: 100%;
+				height: 100%;
+				
+			}
+		        img {
+		            width: 100%; /* 图像最大宽度为其容器的100% */
+		            height: auto; /* 高度自动调整，保持原始比例 */
+					object-fit: contain;
+		        }
+				.wrap{
+					position: relative;
+					margin: 0 auto;
+					width: 1200px;
+					height: 670px;
+				}
+				.gif{
+					position: absolute;
+					object-fit: contain;
+				}
+				.gif1{
+					left: 444px;
+					top: 62px;
+					width: 18px;
+					height: 60px;
+				}
+				.gif2{
+					left: 444px;
+					top: 122px;
+					width: 18px;
+					height: 60px;
+				}
+				.gif3{
+					left: 444px;
+					top: 220px;
+					width: 18px;
+					height: 60px;
+				}
+				.gif4{
+					left: 444px;
+					top: 312px;
+					width: 18px;
+					height: 60px;
+				}
+				.gif5{
+					left: 444px;
+					top: 400px;
+					width: 18px;
+					height: 60px;
+				}
+				.gif6{
+					left: 524px;
+					top: 412px;
+					width: 60px;
+					height: 18px;
+				}
+				.gif7{
+					left: 660px;
+					top: 412px;
+					width: 60px;
+					height: 18px;
+				}
+				.gif8{
+					left: 768px;
+					top: 412px;
+					width: 60px;
+					height: 18px;
+				}
+				.gif9{
+					left: 920px;
+					top: 412px;
+					width: 60px;
+					height: 18px;
+				}
+				.gif10{
+					left: 1060px;
+					top: 412px;
+					width: 60px;
+					height: 18px;
+				}
+
+				.data{
+					position: absolute;
+					font-size: 12px;
+					color: #333;
+					font-weight: bold;
+				}
+				.data1{
+					left: 242px;
+					top: 80px;
+				}
+				.data2{
+					left: 600px;
+					top: 80px;
+				}
+				.data3{
+					left: 934px;
+					top: 80px;
+				}
+				.data4{
+					left: 242px;
+					top: 180px;
+				}
+				.data5{
+					left: 606px;
+					top: 180px;
+				}
+				.data6{
+					left: 934px;
+					top: 180px;
+				}
+				.data7{
+					left: 242px;
+					top: 275px;
+				}
+				.data8{
+					left: 600px;
+					top: 275px;
+				}
+				.data9{
+					left: 934px;
+					top: 275px;
+				}
+				.data10{
+					left: 335px;
+					top: 420px;
+				}
+
+				@media screen and (max-width:560px) and (min-width : 350px) {
+					body{
+						width: 100%;
+						height: 100%;
+					}
+					.wrap{
+						position: absolute;
+						transform-origin: 25% 27%;
+						transform: scale(.6) rotateZ(90deg) ;
+						left: 0;
+						top: 0;
+					}
+				}
+				@media screen and (width < 351px) {
+					body{
+						width: 100%;
+						height: 100%;
+					}
+					.wrap{
+						position: absolute;
+						transform-origin: 22% 19%;
+						transform: scale(.5) rotateZ(90deg) ;
+						left: 0;
+						top: 0;
+					}
+				}
+		    </style>
+	</head>
+	<body>
+		<div class="wrap">
+			<img src="/tp5/public/static/img/cust/buju.jpg" alt="Smiley face">
+			<img class="gif1 gif" src="/tp5/public/static/img/cust/风机转动竖放.gif" alt="Smiley face">
+			<img class="gif2 gif" src="/tp5/public/static/img/cust/风机转动竖放.gif" alt="Smiley face">
+			<img class="gif3 gif" src="/tp5/public/static/img/cust/风机竖向.bmp" alt="Smiley face">
+			<img class="gif4 gif" src="/tp5/public/static/img/cust/风机竖向.bmp" alt="Smiley face">
+			<img class="gif5 gif" src="/tp5/public/static/img/cust/风机转动竖放.gif" alt="Smiley face">
+			<img class="gif6 gif" src="/tp5/public/static/img/cust/风机横向.bmp" alt="Smiley face">
+			<img class="gif7 gif" src="/tp5/public/static/img/cust/风机转动横放.gif" alt="Smiley face">
+			<img class="gif8 gif" src="/tp5/public/static/img/cust/风机转动横放.gif" alt="Smiley face">
+			<img class="gif9 gif" src="/tp5/public/static/img/cust/风机转动横放.gif" alt="Smiley face">
+			<img class="gif10 gif" src="/tp5/public/static/img/cust/风机横向.bmp" alt="Smiley face">
+
+			<div class="data1 data">
+				温度{$data[0]["X11"]}℃ <br>
+				湿度{$data[0]["X12"]}%
+			</div>
+			<div class="data2 data">
+				温度{$data[0]["X11"]}℃ <br>
+				湿度{$data[0]["X12"]}%
+			</div>
+			<div class="data3 data">
+				温度{$data[0]["X11"]}℃ <br>
+				湿度{$data[0]["X12"]}%
+			</div>
+			<div class="data4 data">
+				温度{$data[0]["X11"]}℃ <br>
+				湿度{$data[0]["X12"]}%
+			</div>
+			<div class="data5 data">
+				温度{$data[0]["X11"]}℃ <br>
+				湿度{$data[0]["X12"]}%
+			</div>
+			<div class="data6 data">
+				温度{$data[0]["X11"]}℃ <br>
+				湿度{$data[0]["X12"]}%
+			</div>
+			<div class="data7 data">
+				温度{$data[0]["X11"]}℃ <br>
+				湿度{$data[0]["X12"]}%
+			</div>
+			<div class="data8 data">
+				温度{$data[0]["X11"]}℃ <br>
+				湿度{$data[0]["X12"]}%
+			</div>
+			<div class="data9 data">
+				温度{$data[0]["X11"]}℃ <br>
+				湿度{$data[0]["X12"]}%
+			</div>
+			<div class="data10 data">
+				温度{$data[0]["X11"]}℃ <br>
+				湿度{$data[0]["X12"]}%
+			</div>
+		</div>
+
+
+	</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>shiyan</title>
+	<link rel="stylesheet" href="/tp5/public/static/plugins/bootstrap/css/bootstrap.min.css">
+	<!-- Fontawesome CSS -->
+	<link href="/tp5/public/static/font-awesome/css/font-awesome.css" rel="stylesheet">
+	<!--  Feather Icon CSS -->
+	<link href="/tp5/public/static/icon/feather/css/feather.css" rel="stylesheet">
+	<link rel="stylesheet" href="/tp5/public/static/plugins/bootstrap-table/bootstrap-table.min.css">
+	<link href="/tp5/public/static/css/cust.css" rel="stylesheet">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 20px auto;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		h1 {
+			text-align: center;
+		}
+
+		form {
+			margin-bottom: 20px;
+		}
+
+		label {
+			display: inline-block;
+			margin-bottom: 10px;
+			text-align: right;
+		}
+
+		input[type="text"],
+		select,
+		input[type="date"] {
+			width: 200px;
+			padding: 5px;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			margin-right: 20px;
+			margin-left: 10px;
+		}
+
+		button[type="submit"] {
+			padding: 8px 20px;
+			background-color: #007bff;
+			border: none;
+			color: #fff;
+			border-radius: 3px;
+			cursor: pointer;
+		}
+
+		#main {
+			height: 500px;
+			border: 1px solid #ccc;
+			padding: 10px;
+		}
+	</style>
+	<link href="/tp5/public/static/css/cust.css" rel="stylesheet">
+</head>
+
+<body class="quxian">
+
+	<div class="mydiv">
+		<form action="" method="POST">
+<!-- 			<label for="max">y轴最大值：</label>
+			<input id="days" type="text" id="max" name="max">
+			<label for="min">y轴最小值：</label>
+			<input id="startTime" type="text" id="min" name="min"> -->
+
+            <span class="search-item-box">
+			起始时间<input id="startTime" type="date" name="startTime">
+            </span>
+            <span class="search-item-box">
+			天数<select id="days" name="days">
+				<option value="1"> 1</option>
+				<option value="5">5</option>
+				<option value="10">10</option>
+
+			</select>
+        </span>
+
+			<button id="search" type="submit">查询</button>
+		</form>
+
+
+
+		<!--温度 s-->
+		<div id="main" style="height:500px;border:1px solid #ccc;padding:10px;"></div>
+		<!--温度 e-->
+		<!--湿度 s-->
+		<div id="humidity" style="height:500px;border:1px solid #ccc;padding:10px; margin-top: 20px;"></div>
+		<!--湿度 e-->
+
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+		<script src="//cdn.bootcss.com/echarts/3.3.2/echarts.min.js" charset="utf-8"></script>
+
+		<script type="text/javascript">
+
+
+            var myChart = echarts.init(document.getElementById('main'));
+			var myChart2 = echarts.init(document.getElementById('humidity'));
+
+			$("#search").click(function(){
+                var requestData = {
+                
+                            days: $("#days").val(),
+                            startTime: $("#startTime").val()
+                        };
+                $.ajax({
+                    url: "/tp5/public/index.php/index/F29/f29quxianClick", // 替换成你的服务器端脚本处理URL
+                    type: "POST", // 或者 "POST"
+                    data:  requestData, // 发送到服务器的数据
+                    success: function(response){
+                        console.log(response,2222334444555);
+                        renderEcharts(response);
+                    },
+                
+                });
+
+                return false;
+            });
+
+
+
+            function renderEcharts(res){
+                var tArr = res.TemperatureData?res.TemperatureData:[]; //温度
+                var hArr = res.HumidityData?res.HumidityData:[]; //湿度
+                var t1 = [], t2 = [], t3 = [], t4 = [], t5 = [], t6 = [], t7 = []; //温度
+                var h1 = [], h2 = [], h3 = [], h4 = [], h5 = [], h6 = [], h7 = []; //湿度
+                var tTimeArr = [],hTimeArr=[] //x轴数据
+                for(var i = 0;i<tArr.length;i++){
+                    var item = tArr[i];
+                    t1.push([item.time,item.X11]);
+                    t2.push([item.time,item.X13]);
+					t3.push([item.time,item.X15]);
+					t4.push([item.time,item.X17]);
+					t5.push([item.time,item.X19]);
+					t6.push([item.time,item.X21]);
+					t7.push([item.time,item.X23]);
+                    tTimeArr.push(item.time);
+                }
+                for(var i = 0;i<hArr.length;i++){
+                    var item = hArr[i];
+                    h1.push([item.time,item.X12]);
+                    h2.push([item.time,item.X14]);
+					h3.push([item.time,item.X16]);
+					h4.push([item.time,item.X18]);
+					h5.push([item.time,item.X20]);
+					h6.push([item.time,item.X22]);
+					h7.push([item.time,item.X24]);
+					
+                    hTimeArr.push(item.time);
+                }
+
+                var temperature = [
+                    { name: '温度1', type: 'line', data: t1 },
+                    { name: '温度2', type: 'line', data: t2 },
+					{ name: '温度3', type: 'line', data: t3 },
+					{ name: '温度4', type: 'line', data: t4 },
+					{ name: '温度5', type: 'line', data: t5 },
+					{ name: '温度6', type: 'line', data: t6 },
+					{ name: '温度7', type: 'line', data: t7 },
+                  
+                ];
+                var humidity = [
+                    { name: '湿度1', type: 'line', data: h1 },
+                    { name: '湿度2', type: 'line', data: h2 },
+					{ name: '湿度3', type: 'line', data: h3 },
+					{ name: '湿度4', type: 'line', data: h4 },
+					{ name: '湿度5', type: 'line', data: h5 },
+					{ name: '湿度6', type: 'line', data: h6 },
+					{ name: '湿度7', type: 'line', data: h7 },
+                  
+                ];
+
+
+
+                setEcharts(myChart,tTimeArr, temperature, 1);  // 调用生成图表的方法  --温度
+                setEcharts(myChart2,hTimeArr, humidity, 2);  // 调用生成图表的方法  --湿度
+            }
+
+            setEcharts(myChart,[], [], 1);  // 调用生成图表的方法  --温度
+                setEcharts(myChart2,[], [], 2);  // 调用生成图表的方法  --湿度
+
+			function setEcharts(elDom,timeArr, data, type) {
+				var title = type == 1 ? '温度(°c)' : '湿度(%)';
+
+				elDom.setOption({
+					title: {
+						text: title,
+						textStyle: {
+							color: '#666'
+						}
+					},
+					grid: {
+						borderColor: '#DADBE7',
+						borderWidth: 1,
+						top: 50
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#ccc'
+						}
+					},
+					toolbox: {
+						right: 20,
+						feature: {
+							saveAsImage: {}
+						}
+					},
+					tooltip: {
+						show: true, // 不显示tooltip
+						trigger: 'axis', // 去除默认的 'axis' 触发方式
+						// backgroundColor: '#fff',
+						borderColor: '#fff',
+						axisPointer: {
+							lineStyle: {
+								type: 'dashed', // 线的类型：虚线
+								color: '#aaa' // 线的颜色
+							}
+						},
+						textStyle: {
+							fontSize: 12,
+							color: '#fff'
+						},
+					},
+					xAxis: {
+						type: 'category',
+						boundaryGap: true,
+						axisTick: false,
+						data: timeArr,
+						axisLabel: {
+							textStyle: {
+								fontSize: 12,
+								color: '#999'
+							},
+						},
+						axisLine: {
+							lineStyle: {
+								color: '#DADBE7'
+							}
+						}
+					},
+					yAxis: [
+						{
+							type: 'value',
+							splitArea: { show: false },
+							axisLabel: {
+								textStyle: {
+									fontSize: 13,
+									color: '#999'
+								}
+							},
+							axisLine: {
+								lineStyle: {
+									color: '#DADBE7'
+								}
+							},
+							splitLine: {
+								lineStyle: {
+									color: '#dddd'
+								}
+							}
+						}
+					],
+					series: data
+
+				});
+
+				
+			}
+
+			$(window).on('resize',function(){
+				myChart.resize();
+				myChart2.resize();
+			})
+
+		</script>
+
+
+</body>
+
+</html>

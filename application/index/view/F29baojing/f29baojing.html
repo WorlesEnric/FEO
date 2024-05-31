@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Settings Interface</title>
+    <link rel="stylesheet" href="/tp5/public/static/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Fontawesome CSS -->
+    <link href="/tp5/public/static/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!--  Feather Icon CSS -->
+    <link href="/tp5/public/static/icon/feather/css/feather.css" rel="stylesheet">
+    <link rel="stylesheet" href="/tp5/public/static/plugins/bootstrap-table/bootstrap-table.min.css">
+       <!-- Toastr style -->
+       <link href="/tp5/public/static/plugins/toastr/toastr.min.css" rel="stylesheet">
+       <!-- Gritter -->
+       <link href="/tp5/public/static/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+       <!-- Animate CSS-->
+       <link href="/tp5/public/static/plugins/animate.css/css/animate.css" rel="stylesheet">
+       <!-- I-Check CSS -->
+       <link href="/tp5/public/static/plugins/iCheck/custom.css" rel="stylesheet">
+       <!--Jquery-ui-->
+       <link rel="stylesheet" href="/tp5/public/static/plugins/jquery-ui/jquery-ui.css">
+       <!-- Custom CSS Style-->
+       <link href="/tp5/public/static/css/style.css" rel="stylesheet">
+       <link href="/tp5/public/static/css/cust.css" rel="stylesheet">
+    <style>
+        body{
+            padding: 10px;
+        padding-bottom: 30px;
+        }
+        .modal-dialog .col-form-label.text-danger{
+            display: none;
+        }
+        td{
+            text-align: center;
+        }
+        #parameterForm label{
+            min-width: 130px
+        }
+        .delete-btn{
+            margin-left: 6px;
+        }
+        .toolbar{
+            position: absolute;
+            top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="toolbar" class="toolbar">
+        <button type="button" id="btn-add" class="btn btn-primary add-btn" data-toggle="modal" data-target="#exampleModal">添加</button>
+    </div>
+    <table id="employeeTable">
+    </table>
+
+    <div class="popup-box">
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">添加</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                
+                <div class="modal-body">
+                    <form id="parameterForm">
+                        <input name="id" type="hidden"></input>
+                        <div class="form-group has-danger row">
+                            <label class="col-sm-3 col-form-label">探头名称：</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="probe" class="form-control">
+                                <div class="col-form-label text-danger"></div>
+                            </div>
+                        </div>
+                        <div class="form-group has-danger row">
+                            <label class="col-sm-3 col-form-label">温度报警上限：</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="tUp" class="form-control">
+                                <div class="col-form-label text-danger"></div>
+                            </div>
+                        </div>
+                        <div class="form-group has-danger row">
+                            <label class="col-sm-3 col-form-label">温度报警下限：</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="tDown" class="form-control">
+                                <div class="col-form-label text-danger"></div>
+                            </div>
+                        </div>
+                        <div class="form-group has-danger row">
+                            <label class="col-sm-3 col-form-label">湿度报警上限：</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="hUp" class="form-control">
+                                <div class="col-form-label text-danger"></div>
+                            </div>
+                        </div>
+                        <div class="form-group has-danger row">
+                            <label class="col-sm-3 col-form-label">湿度报警下限：</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="hDown" class="form-control">
+                                <div class="col-form-label text-danger"></div>
+                            </div>
+                        </div>
+                        <div class="form-group has-danger row">
+                            <label class="col-sm-3 col-form-label">电话号码1：</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="telephone1" class="form-control">
+                                <div class="col-form-label text-danger">请输入正确的电话号码</div>
+                            </div>
+                        </div>
+                        <div class="form-group has-danger row">
+                            <label class="col-sm-3 col-form-label">电话号码2：</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="telephone2" class="form-control">
+                                <div class="col-form-label text-danger">请输入正确的电话号码</div>
+                            </div>
+                        </div>
+                        <div class="form-group has-danger row">
+                            <label class="col-sm-3 col-form-label">周期内的异常发送次数：</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="alarmSmsNumLimit" class="form-control">
+                                <div class="col-form-label text-danger"></div>
+                            </div>
+                        </div>
+                        <div class="form-group has-danger row">
+                            <label class="col-sm-3 col-form-label">日发送量：</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="dayNumLimit" class="form-control">
+                                <div class="col-form-label text-danger"></div>
+                            </div>
+                        </div>
+                        <div class="form-group has-danger row">
+                            <label class="col-sm-3 col-form-label">延迟发送时间：(分钟)</label>
+                            <div class="col-sm-9">
+                                <select id="delayTime" name="delayTime" value="" class="form-control">
+									<option value="0" selected>0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select> 
+								<div class="col-form-label text-danger"></div>
+                            </div>
+                        </div>
+                        <div class="form-group has-danger row">
+                            <label class="col-sm-3 col-form-label">间隔发送时间：(分钟)</label>
+                            <div class="col-sm-9">
+                                <select id="spaceTime" name="spaceTime" value="" class="form-control">
+									<option value="0" selected>0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select> 
+								<div class="col-form-label text-danger"></div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-9 offset-sm-3">
+                                <button type="submit" class="btn btn-primary subbtn" name="signup" value="Sign up">提交</button>
+                            </div>
+                        </div>
+                
+                    </form>
+                    <form id="smsForm">
+                        
+                        <div class="form-group has-danger row">
+                            <div class="custom-control custom-switch">
+                                <!--0 关 1 开-->
+                                <input name="status" type="checkbox"  class="custom-control-input" id="customSwitch1">
+                                <label class="custom-control-label" for="customSwitch1">是否开启报警</label>
+                              </div>
+                        </div>
+                        
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+    <script src="/tp5/public/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/tp5/public/static/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="/tp5/public/static/plugins/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+    <script src="/tp5/public/static/plugins/bootstrap-table/table-export/libs/FileSaver/FileSaver.min.js"></script>
+    <script src="/tp5/public/static/plugins/bootstrap-table/table-export/libs/js-xlsx/xlsx.core.min.js"></script>
+    <script src="/tp5/public/static/plugins/bootstrap-table/table-export/libs/jsPDF/jspdf.umd.min.js"></script>
+    <script src="/tp5/public/static/plugins/bootstrap-table/table-export/tableExport.min.js"></script>
+    <script src="/tp5/public/static/plugins/bootstrap-table/bootstrap-table-export.min.js"></script>
+
+    <script>
+        $(function () {
+
+            setTable();
+            function setTable(res) {
+                $('#employeeTable').bootstrapTable({
+                    url: '/tp5/public/index.php/index/f29Baojing/list',
+                    striped: true,
+                    pagination: true,       // 开启分页
+                    sidePagination: 'client',// 分页在客户端进行
+                    pageSize: 10,
+                    showColumns: true,
+                    showToggle: true,
+                    showExport: true,
+                    exportDataType: 'all',
+                    exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
+                    uniqueId:'id',
+                    columns: [{
+                        field: 'id',
+                        title: '序号'
+                    }, {
+                        field: 'probe',
+                        title: '探头名称'
+                    }, {
+                        field: 'tUp',
+                        title: '温度上限'
+                    }, {
+                        title: '温度下限',
+                        field: 'tDown'
+                    }, {
+                        title: '湿度上限',
+                        field: 'hUp'
+                    }, {
+                        title: '湿度下限',
+                        field: 'hDown'
+                    }, {
+                        title: '电话1',
+                        field: 'telephone1'
+                    }, {
+                        title: '电话2',
+                        field: 'telephone2'
+                    }, {
+                        title: '周期内的异常发送次数',
+                        field: 'alarmSmsNumLimit'
+                    }, {
+                        title: '日发送量',
+                        field: 'dayNumLimit'
+                    }, {
+                        title: '延迟发送时间',
+                        field: 'delayTime'
+                    }, {
+                        title: '间隔发送时间',
+                        field: 'spaceTime'
+                    }, {
+                        width: 160,
+                        title: '操作',
+                        formatter:function(value,rows,index){
+                            return '<div style="width: 140px;"></button><button type="button" class="btn btn-primary deal-btn edit-btn" data-toggle="modal" data-target="#exampleModal" data-index="'+index+'" data-uid="'+rows.id+'">编辑</button>'+
+                            '<button type="button" class="btn btn-primary deal-btn delete-btn" data-toggle="modal" data-target="#exampleModal" data-index="'+index+'" data-uid="'+rows.id+'">删除</button></div>'
+                        }
+                    }]
+                });
+            }
+
+            //点击新增按钮
+            $('#btn-add').on('click',function(){
+                $("#exampleModalLabel").text('新增');
+                $('#parameterForm input').each(function(index,item){
+                    $(item).val('');
+                });
+                $('#parameterForm select').each(function(index,item){
+                    $(item).val('');
+                });
+                $('#customSwitch1').prop("checked",false);
+            });
+            
+            var dealIndex;
+            //点击编辑按钮
+            $('#employeeTable').on('click','.edit-btn',function(){
+                $("#exampleModalLabel").text('编辑');
+                var $this = $(this);
+                var uid = $this.data('uid');
+                dealIndex = $this.data('index');
+                var rows = $('#employeeTable').bootstrapTable('getRowByUniqueId',uid);
+                $('#customSwitch1').prop("checked",rows.status==1?true:false);
+                $('#parameterForm input[type="text"]').each(function(index,item){
+                    var $obj = $(item);
+
+                    $obj.val(rows[$obj.attr('name')])
+                })
+                $("input[name='id']").val(rows['id']);
+            });
+            //删除事件
+            $('#employeeTable').on('click','.delete-btn',function(){
+                var $this = $(this);
+                var uid = $this.data('uid'); //当前行的id
+                var data = {
+                    id: uid
+                }
+
+                $.ajax({
+                    url: "/tp5/public/index.php/index/f29Baojing/delete", //请求删除的url地址
+                    type: "POST",
+                    data: data,
+                    dataType: "json",
+                    success: function (result) {
+                        if(result.status == 'success'){
+                            alert(result.message)
+                        // 输出格式化后的对象
+                        $('#employeeTable').bootstrapTable('remove', {
+                            field: 'id',
+                            values: [uid]
+                        });
+                        $('#employeeTable').bootstrapTable('refresh');
+                            
+                        }else{
+                            alert(result.message)
+                        }
+                    },
+                });
+                return false;
+            });
+
+            //提交表单
+            $('#parameterForm').on('submit',function(){
+                var tel1 = $('input[name="telephone1"]');
+                if(!/^1\d{10}$/.test(tel1.val())){
+                    tel1.addClass('form-control-danger').siblings('.text-danger').show();
+                    return false;
+                }else{
+                    tel1.removeClass('form-control-danger').siblings('.text-danger').hide();
+
+                }
+
+                var tel2 = $('input[name="telephone2"]');
+                if(!/^1\d{10}$/.test(tel2.val())){
+                    tel2.addClass('form-control-danger').siblings('.text-danger').show();
+                    return false;
+                }else{
+                    tel2.removeClass('form-control-danger').siblings('.text-danger').hide();
+                }
+                var id = $("input[type='hidden']").val();
+                var url = id?"/tp5/public/index.php/index/f29Baojing/shezhi":"/tp5/public/index.php/index/f29Baojing/add"; //此处根据id判断新增还是编辑，id存在是编辑，否则是新增
+                var data = $(this).serialize();
+                var that = this;
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: data,
+                    dataType: "json",
+                    success: function (result) {
+                        if(result.status == 'success'){
+                            alert(result.message)
+                            if(id){ //编辑成功后回显
+                                var formData = $(that).serializeArray();
+                                var obj = {};
+    
+                                // 将表单数据转换为对象
+                                $.each(formData, function (index, item) {
+                                    obj[item.name] = item.value;
+                                });
+                        
+                                // 输出格式化后的对象
+                                $('#employeeTable').bootstrapTable('updateRow',{index:dealIndex,row:obj});
+                            }else{ //新增成功后刷新表格
+                                $('#employeeTable').bootstrapTable('refresh');
+                            }
+
+                            $('#exampleModal').modal('hide');
+                        }else{
+
+                        }
+                    },
+                });
+                return false;
+            })
+			
+			
+            $("#customSwitch1").on('change',function(e,){
+                var id = $("input[name='id']").val();
+                var data = {smsSwitch:0,id:id}
+                if(this.checked){
+                    data.smsSwitch = 1;
+                }else{
+                    data.smsSwitch = 0;
+                }
+                console.log(data);
+                $.ajax({
+                    url: "/tp5/public/index.php/index/f29Baojing/smsSwitch",
+                    type: "POST",
+                    data: data,
+                    dataType: "json",
+                    success: function (result) {
+                        console.log(result,22222)
+                        $('#employeeTable').bootstrapTable('updateRow',{index:dealIndex,row:{status: data.smsSwitch}});
+                    },
+                });
+            })
+           
+        })
+    </script>
+
+</body>
+
+</html>

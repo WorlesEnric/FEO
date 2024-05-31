@@ -1,0 +1,6 @@
+.idea
+composer.lock
+*.log
+thinkphp
+AdminosJS_bak.js
+cust_bak.js

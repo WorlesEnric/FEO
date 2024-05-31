@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta name="referrer" content="never">
+<meta name="robots" content="noindex, nofollow">
+    		<!-- Bootstrap CSS -->
+		<link href="/tp5/public/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Fontawesome CSS -->
+		<link href="/tp5/public/static/font-awesome/css/font-awesome.css" rel="stylesheet">
+		<!--  Feather Icon CSS -->
+		<link href="/tp5/public/static/icon/feather/css/feather.css" rel="stylesheet">
+		<link href="/tp5/public/static/css/cust.css" rel="stylesheet">
+        <script src="/tp5/public/static/plugins/jquery/jquery-3.1.1.min.js"></script>
+   <style>
+    body{
+        color: #999;
+    background-color: #dee6ff;
+    background-size: cover;
+    }
+    .logo-box{
+        margin: 80px auto 0;
+        width: 200px;
+        height: 140px;
+        img{
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+    .form-container{
+        padding-top: 100px;
+        position: relative;
+        margin: 50px auto 0 auto;
+        background-image: linear-gradient(to right,rgb(140, 183, 235), rgb(0, 166, 255));
+        width: 400px;
+        height: 300px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    .avatar-icon{
+        position: absolute;
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+        border-radius: 80px;
+        color: #999;
+        background-color: #fff;
+        z-index: 9;
+        text-align: center;
+        line-height: 80px;
+    }
+    form{
+        padding-top: 50px;
+        display: block;
+        width: 100%;
+        background-color: #fff;
+        height: 200px;
+        box-sizing: border-box;
+    }
+    form .input-group{
+        width: 80%;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    form .input-group span{
+        display: block;
+        margin-right: 10px;
+        width: 60px;
+        text-align: justify;
+        text-justify: distribute-all-lines; 
+        text-align-last: justify; 
+    }
+    form input{
+        padding-left: 3px;
+        outline: none;
+        border: 1px solid #d2d2d2;
+        background-color: transparent;
+        color: #444;
+    }
+    form .btn{
+        display: block;
+        padding: 0;
+        margin: 20px auto 0;
+        width: 200px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        border: 0;
+        background-color: rgb(0, 166, 255);
+
+        text-align: center;
+        color: #fff;
+    }
+    form .btn:hover{
+        color: #f1f1f1;
+    }
+    @media screen and (max-width: 768px) {
+        .logo-box{
+            margin-top: 6vh;
+        }
+        .form-container{
+            margin-top: 8vh;
+            width: 90%;
+            min-width: 200px;
+            max-width: 400px;
+        }
+    }
+    .popup-box{
+        display: none;
+        padding: 10px 15px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background-color: rgba(0, 0, 0, .8);
+        z-index: 9999;
+        font-size: 14px;
+        color: #fff;
+        border-radius: 4px;
+        text-align: center;
+    }
+   </style>
+</head>
+<body>
+
+    <div class="logo-box">
+        <img src="/tp5/public/static/img/cust/logo.png" alt="">
+    </div>
+    <div class="form-container">
+        <div class="avatar-icon"><i class="feather icon-user"></i></div>
+        <form id="login-form" class="flex f-col f-ac">
+            <div class="input-group flex f-jar">
+                <span class="flex f-jb">用户名</span><input type="text" id="username" name="username">
+            </div>
+            <div class="input-group flex f-jar">
+                <span class="flex f-jb">密码</span><input type="password" id="password" name="password">
+            </div>
+            <input class="btn" type="button" id="login-btn" value="登录">
+        </form>
+    </div>
+
+    <div class="popup-box">账号或密码不正确<br>请重新输入</div>
+    
+    <script>
+    $(document).ready(function(){
+        $('#login-btn').click(function(){
+            var username = $('#username').val();
+            var password = $('#password').val();
+            $.ajax({
+                type: 'POST',
+                url: '/tp5/public/index.php/index/index/check1',
+                data: {
+                    username: username,
+                    password: password
+                },
+                dataType:'json',
+                success: function(response){   
+                
+                    if (response.param === 1) {
+                        window.location.href = "/tp5/public/index.php/index/index/check";
+                    } else if (response.param === 2) {
+                        window.location.href = "/tp5/public/index.php/index/index/checkd02";
+                    }else if (response.param === 3) {
+                        window.location.href = "/tp5/public/index.php/index/index/checkf20";
+                    }else if (response.param === 4) {
+                        window.location.href = "/tp5/public/index.php/index/index/checkf21";
+                    }else if (response.param === 5) {
+                        window.location.href = "/tp5/public/index.php/index/index/checkh08";
+                    }else if (response.param === 6) {
+                        window.location.href = "/tp5/public/index.php/index/index/checkf29";
+                    }else if (response.param === 7) {
+                        window.location.href = "/tp5/public/index.php/index/index/checkf29xiaoku";
+                    } else {
+                        // 处理其他情况，例如参数值为0或不存在
+                        console.log("无法确定跳转目标");
+                        $(".popup-box").show();
+                        setTimeout(function(){
+                            $(".popup-box").hide();
+                        },2000);
+                    }
+                    }
+               
+               
+            });
+        });
+    });
+    </script>
+    
+    </body>                            
+</html>

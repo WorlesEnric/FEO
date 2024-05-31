@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		html {
+			width: 100%;
+			height: 100%;
+
+		}
+
+		img {
+			width: 100%;
+			/* 图像最大宽度为其容器的100% */
+			height: auto;
+			/* 高度自动调整，保持原始比例 */
+			object-fit: contain;
+		}
+
+		.wrap {
+			position: relative;
+			margin: 0 auto;
+			width: 1200px;
+			height: 670px;
+		}
+
+		.gif {
+			position: absolute;
+			object-fit: cover;
+		}
+
+		.gif1 {
+			left: 208px;
+			top: 160px;
+			width: 30px;
+			height: 8px;
+		}
+
+		.gif2 {
+			left: 208px;
+			top: 258px;
+			width: 30px;
+			height: 8px;
+		}
+
+		.gif3 {
+			left: 208px;
+			top: 356px;
+			width: 30px;
+			height: 8px;
+		}
+
+		.gif4 {
+			left: 206px;
+			top: 454px;
+			width: 30px;
+			height: 8px;
+		}
+
+		.gif5 {
+			left: 236px;
+			top: 160px;
+			width: 8px;
+			height: 350px;
+			background: url('/tp5/public/static/img/cust/GDG_S.gif') repeat-y;
+			background-size: 100% auto;
+		}
+
+		.gif6 {
+			left: 236px;
+			top: 510px;
+			width: 260px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDG_H.gif') repeat-x;
+			background-size: contain;
+		}
+
+		.gif7 {
+			left: 350px;
+			top: 518px;
+			width: 8px;
+			height: 46px;
+			background: url('/tp5/public/static/img/cust/GDG_S.gif') repeat-y;
+			background-size: contain;
+		}
+
+		.gif8 {
+			left: 350px;
+			top: 565px;
+			width: 147px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDG_H.gif') repeat-x;
+			background-size: contain;
+		}
+
+		.gif9 {
+			left: 568px;
+			top: 491px;
+			width: 30px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDG_H.gif') repeat-x;
+			background-size: auto 100%;
+		}
+
+		.gif10 {
+			left: 598px;
+			top: 491px;
+			width: 8px;
+			height: 59px;
+			background: url('/tp5/public/static/img/cust/GDG_S.gif') repeat-y;
+			background-size: 100% auto;
+		}
+
+		.gif11 {
+			left: 568px;
+			top: 547px;
+			width: 457px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDG_H.gif') repeat-x;
+			background-size: auto 100%;
+		}
+
+		.gif12 {
+			left: 980px;
+			top: 118px;
+			width: 8px;
+			height: 428px;
+			background: url('/tp5/public/static/img/cust/GDG_S.gif') repeat-y;
+			background-size: 100% auto;
+		}
+
+		.gif13 {
+			left: 988px;
+			top: 118px;
+			width: 36px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDG_H.gif') repeat-x;
+			background-size: auto 100%;
+		}
+
+		.gif14 {
+			left: 988px;
+			top: 222px;
+			width: 36px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDG_H.gif') repeat-x;
+			background-size: auto 100%;
+		}
+
+		.gif15 {
+			left: 988px;
+			top: 332px;
+			width: 36px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDG_H.gif') repeat-x;
+			background-size: auto 100%;
+		}
+
+		.gif16 {
+			left: 988px;
+			top: 440px;
+			width: 36px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDG_H.gif') repeat-x;
+			background-size: auto 100%;
+		}
+
+		.gif17 {
+			left: 826px;
+			top: 118px;
+			width: 36px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDR_H.gif') repeat-x;
+			background-size: auto 100%;
+		}
+
+		.gif18 {
+			left: 826px;
+			top: 213px;
+			width: 36px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDR_H.gif') repeat-x;
+			background-size: auto 100%;
+		}
+
+		.gif19 {
+			left: 826px;
+			top: 308px;
+			width: 36px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDR_H.gif') repeat-x;
+			background-size: auto 100%;
+		}
+
+		.gif20 {
+			left: 826px;
+			top: 402px;
+			width: 36px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDR_H.gif') repeat-x;
+			background-size: auto 100%;
+		}
+
+		.gif21 {
+			left: 826px;
+			top: 494px;
+			width: 36px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDR_H.gif') repeat-x;
+			background-size: auto 100%;
+		}
+
+		.gif22 {
+			left: 862px;
+			top: 68px;
+			width: 8px;
+			height: 434px;
+			background: url('/tp5/public/static/img/cust/GDR_S.gif') repeat-y;
+			background-size: 100% auto;
+		}
+
+		.gif23 {
+			left: 1122px;
+			top: 118px;
+			width: 36px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDR_H.gif') repeat-x;
+			background-size: auto 100%;
+		}
+
+		.gif24 {
+			left: 1122px;
+			top: 222px;
+			width: 36px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDR_H.gif') repeat-x;
+			background-size: auto 100%;
+		}
+
+		.gif25 {
+			left: 1122px;
+			top: 332px;
+			width: 36px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDR_H.gif') repeat-x;
+			background-size: auto 100%;
+		}
+
+		.gif26 {
+			left: 1122px;
+			top: 440px;
+			width: 36px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDR_H.gif') repeat-x;
+			background-size: auto 100%;
+		}
+
+		.gif27 {
+			left: 1122px;
+			top: 548px;
+			width: 36px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDR_H.gif') repeat-x;
+			background-size: auto 100%;
+		}
+
+		.gif28 {
+			left: 1158px;
+			top: 68px;
+			width: 8px;
+			height: 488px;
+			background: url('/tp5/public/static/img/cust/GDR_S.gif') repeat-y;
+			background-size: 100% auto;
+		}
+
+		.gif29 {
+			left: 30px;
+			top: 60px;
+			width: 1136px;
+			height: 8px;
+			background: url('/tp5/public/static/img/cust/GDR_H.gif') repeat-x;
+			background-size: auto 100%;
+			background-position: left top;
+		}
+
+		.gif30 {
+			left: 30px;
+			top: 68px;
+			width: 8px;
+			height: 405px;
+			background: url('/tp5/public/static/img/cust/GDR_S.gif') repeat-y;
+			background-size: 100% auto;
+		}
+
+		.gif31 {
+			left: 38px;
+			top: 172px;
+			width: 19px;
+			height: 8px;
+		}
+
+		.gif32 {
+			left: 38px;
+			top: 270px;
+			width: 19px;
+			height: 8px;
+		}
+
+		.gif33 {
+			left: 38px;
+			top: 366px;
+			width: 19px;
+			height: 8px;
+		}
+
+		.gif34 {
+			left: 38px;
+			top: 465px;
+			width: 19px;
+			height: 8px;
+		}
+
+		.gif17,.gif18,.gif19,.gif20,.gif21,.gif23,.gif24,.gif25,.gif26,.gif27,.gif30,.gif31,.gif32,.gif33,.gif34{
+			transform: rotateZ(180deg);
+		}
+
+
+		.temperature1{
+			position: absolute;
+			top: 80px;
+			left: 386px;
+			font-size: 16px;
+			font-weight: bold;
+		}
+		.temperature2{
+			position: absolute;
+			top: 470px;
+			left: 382px;
+			font-size: 16px;
+			font-weight: bold;
+		}
+		.data{
+			position: absolute;
+			font-size: 24px;
+			
+		}
+		.data.green{
+			color: #43a769;
+		}
+		.data.red{
+			color: #cd2f13;
+		}
+		.data1{
+			left: 800px;
+			top: 146px;
+		}
+		.data2{
+			left: 800px;
+			top: 240px;
+		}
+		.data3{
+			left: 800px;
+			top: 334px;
+		}
+		.data4{
+			left: 800px;
+			top: 428px;
+		}
+		.data5{
+			left: 800px;
+			top: 517px;
+		}
+
+		.data6{
+			left: 1095px;
+			top: 142px;
+		}
+		.data7{
+			left: 1095px;
+			top: 250px;
+		}
+		.data8{
+			left: 1095px;
+			top: 358px;
+		}
+		.data9{
+			left: 1095px;
+			top: 467px;
+		}
+		.data10{
+			left: 1106px;
+			top: 574px;
+		}
+		
+		@media screen and (max-width:560px) and (min-width : 350px) {
+					body{
+						width: 100%;
+						height: 100%;
+					}
+					.wrap{
+						position: absolute;
+						transform-origin: 25% 27%;
+						transform: scale(.6) rotateZ(90deg) ;
+						left: 0;
+						top: 0;
+					}
+				}
+				@media screen and (width < 351px) {
+					body{
+						width: 100%;
+						height: 100%;
+					}
+					.wrap{
+						position: absolute;
+						transform-origin: 22% 19%;
+						transform: scale(.5) rotateZ(90deg) ;
+						left: 0;
+						top: 0;
+					}
+				}
+	</style>
+</head>
+
+<body>
+	<div class="wrap">
+		<img src="/tp5/public/static/img/cust/xitong.jpg" alt="Smiley face">
+		<img class="gif1 gif" src="/tp5/public/static/img/cust/GDG_H.gif" alt="Smiley face">
+		<img class="gif2 gif" src="/tp5/public/static/img/cust/GDG_H.gif" alt="Smiley face">
+		<img class="gif3 gif" src="/tp5/public/static/img/cust/GDG_H.gif" alt="Smiley face">
+		<img class="gif4 gif" src="/tp5/public/static/img/cust/GDG_H.gif" alt="Smiley face">
+		<div class="gif5 gif"></div>
+		<div class="gif6 gif"></div>
+		<div class="gif7 gif"></div>
+		<div class="gif8 gif"></div>
+		<div class="gif9 gif"></div>
+		<div class="gif10 gif"></div>
+		<div class="gif11 gif"></div>
+		<div class="gif12 gif"></div>
+		<div class="gif13 gif"></div>
+		<div class="gif14 gif"></div>
+		<div class="gif15 gif"></div>
+		<div class="gif16 gif"></div>
+		<div class="gif17 gif"></div>
+		<div class="gif18 gif"></div>
+		<div class="gif19 gif"></div>
+		<div class="gif20 gif"></div>
+		<div class="gif21 gif"></div>
+		<div class="gif22 gif"></div>
+		<div class="gif23 gif"></div>
+		<div class="gif24 gif"></div>
+		<div class="gif25 gif"></div>
+		<div class="gif26 gif"></div>
+		<div class="gif27 gif"></div>
+		<div class="gif28 gif"></div>
+		<div class="gif29 gif"></div>
+		<div class="gif30 gif"></div>
+		<img class="gif31 gif" src="/tp5/public/static/img/cust/GDR_H.gif" alt="Smiley face">
+		<img class="gif32 gif" src="/tp5/public/static/img/cust/GDR_H.gif" alt="Smiley face">
+		<img class="gif33 gif" src="/tp5/public/static/img/cust/GDR_H.gif" alt="Smiley face">
+		<img class="gif34 gif" src="/tp5/public/static/img/cust/GDR_H.gif" alt="Smiley face">
+		<div class="temperature1">
+			温度{$data[0]["X11"]}℃
+		</div>
+		<div class="temperature2">
+			温度{$data[0]["X12"]}% <br>
+		</div>
+		<?php
+			if($data[0]["X11"] > 1){
+				echo "<div class='data1 data green'>开</div>";
+			}else{
+				echo "<div class='data1 data red'>关</div>";
+			}
+
+			if($data[0]["X11"] > 1){
+				echo "<div class='data2 data green'>开</div>";
+			}else{
+				echo "<div class='data2 data red'>关</div>";
+			}
+
+			if($data[0]["X11"] > 1){
+				echo "<div class='data3 data green'>开</div>";
+			}else{
+				echo "<div class='data3 data red'>关</div>";
+			}
+
+			if($data[0]["X11"] > 1){
+				echo "<div class='data4 data green'>开</div>";
+			}else{
+				echo "<div class='data4 data red'>关</div>";
+			}
+
+			if($data[0]["X11"] > 1){
+				echo "<div class='data5 data green'>开</div>";
+			}else{
+				echo "<div class='data5 data red'>关</div>";
+			}
+		?>
+
+		<?php
+		if($data[0]["X11"] > 1){
+			echo "<div class='data6 data green'>开</div>";
+		}else{
+			echo "<div class='data6 data red'>关</div>";
+		}
+
+		if($data[0]["X11"] > 1){
+			echo "<div class='data7 data green'>开</div>";
+		}else{
+			echo "<div class='data7 data red'>关</div>";
+		}
+
+		if($data[0]["X11"] > 1){
+			echo "<div class='data8 data green'>开</div>";
+		}else{
+			echo "<div class='data8 data red'>关</div>";
+		}
+
+		if($data[0]["X11"] > 1){
+			echo "<div class='data9 data green'>开</div>";
+		}else{
+			echo "<div class='data9 data red'>关</div>";
+		}
+
+		if($data[0]["X11"] > 1){
+			echo "<div class='data10 data green'>开</div>";
+		}else{
+			echo "<div class='data10 data red'>关</div>";
+		}
+	?>
+
+	</div>
+
+</body>
+
+</html>
